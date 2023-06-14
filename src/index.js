@@ -1,17 +1,20 @@
-var R1 = document.getElementById("row1");
-var R2 = document.getElementById("row2");
-var R3 = document.getElementById("row3");
-const rows = [R1, R2, R3];
-const rowdata = [
-  ["Webmaster", "example1@email.com", "Helsinginkatu 3", "X"],
-  ["User123", "example2@email.com", "Oulunkatu 1", "-"],
-  ["AnotherUser222", "example3@email.com", "Vaasankatu 2", "-"],
-];
-for (let i = 0; i < rowdata.length; i++) {
-  for (let x = 0; x < rowdata[i].length; x++) {
-    var cell = document.createElement("td");
-    var txt = document.createTextNode(rowdata[i][x]);
-    cell.appendChild(txt);
-    rows[i].appendChild(cell);
-  }
+document.getElementById("submit-data").addEventListener("click", myfunction);
+function myfunction() {
+  var data_table = document.getElementById("data-table");
+  var user = document.getElementById("input-username").value;
+  var email = document.getElementById("input-email").value;
+  var address = document.getElementById("input-address").value;
+  var admin = document.getElementById("input-admin").checked;
+  // creating a new row in the table
+  var newrow = data_table.insertRow();
+  // creating new cells in the row
+  var newcell1 = newrow.insertCell();
+  var newcell2 = newrow.insertCell();
+  var newcell3 = newrow.insertCell();
+  var newcell4 = newrow.insertCell();
+  // putting input data in the cells
+  newcell1.innerHTML = user;
+  newcell2.innerHTML = email;
+  newcell3.innerHTML = address;
+  newcell4.innerHTML = admin ? "X" : "-";
 }
