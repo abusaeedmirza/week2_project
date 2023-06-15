@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Task 4</title>
+    <link rel="stylesheet" type="text/css" href="src/styles.css" />
+    <meta charset="UTF-8" />
+  </head>
 
-<head>
-	<title>Task 3</title>
-	<link rel="stylesheet" type="text/css" href="src/styles.css">
-	<meta charset="UTF-8" />
-</head>
+  <body>
+    <p id="para"></p>
+    <form>
+      <fieldset>
+        <label for="username">Username:</label><br />
+        <input type="text" id="input-username" /><br />
+        <label for="email">Email:</label><br />
+        <input type="text" id="input-email" /><br />
+        <label for="address">Address:</label><br />
+        <input type="text" id="input-address" /><br />
+        <input type="checkbox" id="input-admin" />
+        <label for="admin">Admin</label><br /><br />
+        <input type="button" id="submit-data" value="Submit" />
+        <input type="button" id="empty-table" value="Empty" />
+      </fieldset>
+    </form>
+    <br />
+    <br />
+    <table
+      id="data-table"
+      style="width: 100%; text-align: center; vertical-align: middle;"
+    >
+      <tr>
+        <td>Username</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Admin</td>
+      </tr>
+    </table>
 
-<body>
-	<p id="para"></p>
-	<form>
-		<fieldset>
-		<label for="username">Username:</label><br>
-		<input type="text" id="input-username"><br>
-		<label for="email">Email:</label><br>
-		<input type="text" id="input-email"><br>
-		<label for="address">Address:</label><br>
-		<input type="text" id="input-address"><br>
-		<input type="checkbox" id="input-admin">
-		<label for="admin">Admin</label><br><br>
-		<input type="button" id="submit-data" value="Submit">
-		<input type="button" id="empty-table" value="Empty">
-		</fieldset>
-	</form>
-	<br>
-	<br>
-	<Table id="data-table" style="width:100%; text-align: center; vertical-align: middle">
-		<tr>
-			<th>Username</th>
-			<th>Email</th>
-			<th>Address</th>
-			<th>Admin</th>
-		</tr>	
-	</Table>
-
-	<script src="src/index.js">
-	</script>
-</body>
-
+    <script src="src/index.js"></script>
+  </body>
 </html>
