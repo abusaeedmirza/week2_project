@@ -6,6 +6,7 @@ function myfunction() {
   var email = document.getElementById("input-email").value;
   var address = document.getElementById("input-address").value;
   var admin = document.getElementById("input-admin").checked;
+  var image = document.getElementById("input-image").files[0];
   var rownumber = FindUsername(user);
   if (rownumber < 1) {
     //if username is not matched
@@ -16,11 +17,26 @@ function myfunction() {
     var newcell2 = newrow.insertCell();
     var newcell3 = newrow.insertCell();
     var newcell4 = newrow.insertCell();
+    var newcell5 = newrow.insertCell();
     // putting input data in the cells
     newcell1.innerHTML = user;
     newcell2.innerHTML = email;
     newcell3.innerHTML = address;
     newcell4.innerHTML = admin ? "X" : "-";
+    if (image) {
+      // reading the file to upload image file in cell5
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = document.createElement("img");
+        img.src = reader.result;
+        img.width = 64;
+        img.height = 64;
+        newcell5.appendChild(img);
+      };
+      reader.readAsDataURL(image);
+    } else {
+      newcell5.textContent = "-";
+    }
   }
   if (rownumber >= 1) {
     // if username is matched
@@ -32,6 +48,7 @@ function myfunction() {
     cells.textContent = address;
     cells = updatedrow[rownumber].getElementsByTagName("td")[3];
     cells.textContent = admin ? "X" : "-";
+    UpdateImage(image, updatedrow, rownumber, cells);
   }
 }
 function EmptyTable() {
@@ -48,6 +65,7 @@ function FindUsername(username) {
   for (let i = 0; rows.length > i; i++) {
     var cells = rows[i].getElementsByTagName("td")[0];
     if (cells.textContent === username) {
+      console.log("yes it is matched");
       var row = i;
       return row;
     } else {
@@ -55,4 +73,23 @@ function FindUsername(username) {
     }
   }
   return row;
+}
+function UpdateImage(image, updatedrow, rownumber, cells) {
+  // update the image first deleting the old one
+  cells = updatedrow[rownumber].getElementsByTagName("td")[4];
+  var oldimg = cells.querySelector("img");
+  cells.removeChild(oldimg);
+  if (image) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var img = document.createElement("img");
+      img.src = reader.result;
+      img.width = 64;
+      img.height = 64;
+      cells.appendChild(img);
+    };
+    reader.readAsDataURL(image);
+  } else {
+    cells.textContent = "-";
+  }
 }
